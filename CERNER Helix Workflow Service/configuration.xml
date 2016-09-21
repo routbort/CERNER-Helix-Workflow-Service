@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Root>\\plmfs1\PLMLABS\Helix Automation\PROD</Root>
+  <FlowTubeCheckerRoot>\\plmfs1\PLMLABS\Helix Automation\PROD\Flow Cytometry</FlowTubeCheckerRoot>
+  <DatabaseServer>spidrsql1\spidrsql1</DatabaseServer>
+  <DatabaseName>HelixWorkflow</DatabaseName>
+  <DatabaseUsername>HelixWorkflow_ServiceAccount</DatabaseUsername>
+  <WorkingDirectoryName></WorkingDirectoryName>
+  <ArchiveDirectoryName>ArchiveFiles</ArchiveDirectoryName>
+  <NotificationEmailAddresses>mark.routbort@mdanderson.org</NotificationEmailAddresses>
+  <SMTPServer>mail.mdanderson.org</SMTPServer>
+  <SMTPPort>25</SMTPPort>
+  <EmailFrom>noreply@mdanderson.org</EmailFrom>
+  <ArchiveAfterMinutes>600</ArchiveAfterMinutes>
+  <TimerInterval>60</TimerInterval>
+  <ArchiveAfterMinutesList>
+    <ArchiveAfterMinutesEntry>
+      <Key>Flow Cytometry</Key>
+      <Value>240</Value>
+    </ArchiveAfterMinutesEntry>
+    <ArchiveAfterMinutesEntry>
+      <Key>MDL</Key>
+      <Value>30</Value>
+    </ArchiveAfterMinutesEntry>
+  </ArchiveAfterMinutesList>
+</Configuration>

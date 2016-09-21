@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CERNER_Helix_Workflow_Service.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Root" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\temp</Value>
+    </Setting>
+    <Setting Name="WorkingDirectoryName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Working Directory</Value>
+    </Setting>
+    <Setting Name="ArchiveDirectoryName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Archived Files</Value>
+    </Setting>
+    <Setting Name="NotificationEmailAddresses" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mark.routbort@mdanderson.org</Value>
+    </Setting>
+    <Setting Name="SMTPServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mail.mdanderson.org</Value>
+    </Setting>
+    <Setting Name="SMTPPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="EmailFrom" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">noreply@mdanderson.org</Value>
+    </Setting>
+    <Setting Name="ArchiveAfterMinutes" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
