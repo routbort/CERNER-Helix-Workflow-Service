@@ -9,8 +9,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.IO;
 using System.Xml.Linq;
-using HidWatcher2;
-
+using Conductor.Devices.BarcodeScanner;
 
 namespace HelixFlowTubeChecker
 {
@@ -22,8 +21,7 @@ namespace HelixFlowTubeChecker
             DataInterface di = new DataInterface(Global.SAMPLE_CONNECTION);
             this.tubeValidationControl1.Bind(di);
             this.flowTubeListDisplayControl1.Bind(di);
-
-            HidWatcher2.BarCodeWatcher bcw = new BarCodeWatcher(Global.USB_SCANNER_CONFIG);
+            Conductor.Devices.BarcodeScanner.BarCodeWatcher bcw = new BarCodeWatcher(Global.USB_SCANNER_CONFIG);
             bcw.CodeRead += new BarCodeWatcher.CodeReadHandler(bcw_CodeRead);
             // tubeValidationControl1.ShowMessage("Welcome to the tube checker. Scan first tube of a rack/manifest to begin.");
             this.flowTubeListDisplayControl1.RefreshData();

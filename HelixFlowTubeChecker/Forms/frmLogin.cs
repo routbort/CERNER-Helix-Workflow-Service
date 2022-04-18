@@ -189,6 +189,7 @@ public class frmLogin : Form
             this.chkTest.TabIndex = 6;
             this.chkTest.Text = "Use Test Database";
             this.chkTest.UseVisualStyleBackColor = true;
+            this.chkTest.Visible = false;
             this.chkTest.CheckedChanged += new System.EventHandler(this.chkTest_CheckedChanged);
             // 
             // lblMain
