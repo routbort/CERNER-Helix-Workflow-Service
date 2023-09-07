@@ -19,6 +19,7 @@ namespace CERNER_Helix_Workflow_Service
     {
         public string Root { get; set; }
         public string FlowTubeCheckerRoot { get; set; }
+        public string FlowTubeCheckerRootBeaker { get; set; }
         public string DatabaseServer { get; set; }
         public string DatabaseName { get; set; }
         public string DatabaseUsername { get; set; }

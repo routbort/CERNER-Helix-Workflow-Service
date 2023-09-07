@@ -182,6 +182,9 @@ public class frmLogin : Form
             // chkTest
             // 
             this.chkTest.AutoSize = true;
+            this.chkTest.Checked = true;
+            this.chkTest.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTest.Enabled = false;
             this.chkTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTest.Location = new System.Drawing.Point(204, 88);
             this.chkTest.Name = "chkTest";
@@ -189,7 +192,6 @@ public class frmLogin : Form
             this.chkTest.TabIndex = 6;
             this.chkTest.Text = "Use Test Database";
             this.chkTest.UseVisualStyleBackColor = true;
-            this.chkTest.Visible = false;
             this.chkTest.CheckedChanged += new System.EventHandler(this.chkTest_CheckedChanged);
             // 
             // lblMain

@@ -82,7 +82,7 @@ namespace HelixFlowTubeChecker
 
         public void HandleBarCodeScan(Code barcode)
         {
-            if (barcode.Symbology == Symbology.DataMatrix)
+            if (barcode.Symbology == Symbology.DataMatrix || barcode.Symbology==Symbology.Code128)
                 tubeValidationControl1.HandleAccessionScan(barcode.TextData);
             else
             {

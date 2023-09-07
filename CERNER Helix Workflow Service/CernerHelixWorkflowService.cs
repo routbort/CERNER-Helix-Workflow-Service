@@ -39,6 +39,8 @@ namespace CERNER_Helix_Workflow_Service
 
         DataInterface _DataInterface;
         System.IO.FileSystemWatcher _watcher;
+        System.IO.FileSystemWatcher _watcherBeaker;
+
         protected override void OnStart(string[] args)
         {
             eventLog1.WriteEntry("Raw service start");
@@ -104,11 +106,19 @@ namespace CERNER_Helix_Workflow_Service
                     _watcher.IncludeSubdirectories = true;
                     _watcher.Created += new FileSystemEventHandler(watcher_Created);
                     _watcher.EnableRaisingEvents = true;
+
+                    _watcherBeaker = new FileSystemWatcher(_Configuration.FlowTubeCheckerRootBeaker, "*.xlsx");
+                    _watcherBeaker.IncludeSubdirectories = true;
+                    _watcherBeaker.Created += new FileSystemEventHandler(watcher_Created);
+                    _watcherBeaker.EnableRaisingEvents = true;
+
+
                 }
 
             ArchiveFiles(_Configuration.Root, _Configuration.ArchiveAfterMinutes);
 
         }
+ 
 
         void DoWorkFlow(object state)
         {
@@ -122,6 +132,10 @@ namespace CERNER_Helix_Workflow_Service
                 int UpdateCount = _DataInterface.ParseDirectory(_Configuration.FlowTubeCheckerRoot).Count;
                 if (UpdateCount != 0)
                     LogEvent(UpdateCount.ToString() + " flow XML manifests uploaded at " + DateTime.Now.ToLongTimeString(), false);
+
+                int UpdateCountBeaker = _DataInterface.ParseDirectory(_Configuration.FlowTubeCheckerRootBeaker).Count;
+                if (UpdateCountBeaker != 0)
+                    LogEvent(UpdateCountBeaker.ToString() + " flow XLSX manifests uploaded at " + DateTime.Now.ToLongTimeString(), false);
             }
             catch (Exception ex)
             {

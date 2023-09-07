@@ -1,11 +1,11 @@
-﻿using System;
+﻿using ExcelDataReader;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Security.Cryptography;
-using System.Data;
 using System.ComponentModel;
+using System.Data;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 
 namespace OncoSeek.Core
 {
@@ -30,7 +30,7 @@ namespace OncoSeek.Core
                 using (var stream = File.OpenRead(filename))
                 {
                     string raw = BitConverter.ToString(md5.ComputeHash(stream));
-                    return raw.Replace("-","").ToLower();
+                    return raw.Replace("-", "").ToLower();
                 }
             }
 
@@ -60,6 +60,18 @@ namespace OncoSeek.Core
         }
 
 
+        public static DataTable ImportExceltoDatatable(string filePath)
+        {
+
+            using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
+            using (var reader = ExcelReaderFactory.CreateReader(stream))
+            {
+                var result = reader.AsDataSet(new ExcelDataSetConfiguration() { ConfigureDataTable = (tableReader) => new ExcelDataTableConfiguration() { UseHeaderRow = true } });
+                return result.Tables[0];
+            }
+
+
+        }
 
 
     }

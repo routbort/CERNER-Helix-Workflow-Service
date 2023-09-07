@@ -323,6 +323,10 @@ public class DataInterface
 
     public bool ParseFile(string path)
     {
+        string filename = Path.GetFileName(path);
+        if (filename.StartsWith("~"))
+            return false;
+
 
         //if we have previously parsed this file, we will abort
 
@@ -354,8 +358,12 @@ public class DataInterface
             if (ParseFile(filepath))
                 new_files.Add(filepath);
         }
-      //  foreach (string directory in Directory.GetDirectories(path))
-    //        new_files.AddRange(ParseDirectory(directory));
+        foreach (string filepath in Directory.GetFiles(path, "*.xlsx"))
+        {
+            if (ParseFile(filepath))
+                new_files.Add(filepath);
+        }
+
         return new_files;
 
     }

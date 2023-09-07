@@ -44,11 +44,11 @@
             this.chkShowTest = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tubeValidationControl1 = new HelixFlowTubeChecker.TubeValidationControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.flowTubeListDisplayControl1 = new HelixFlowTubeChecker.FlowTubeListDisplayControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmdRefresh = new System.Windows.Forms.Button();
-            this.tubeValidationControl1 = new HelixFlowTubeChecker.TubeValidationControl();
-            this.flowTubeListDisplayControl1 = new HelixFlowTubeChecker.FlowTubeListDisplayControl();
             this.pnlTest.SuspendLayout();
             this.pnlReset.SuspendLayout();
             this.pblDebugOption.SuspendLayout();
@@ -227,6 +227,18 @@
             this.tabPage1.Text = "Rack validation";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tubeValidationControl1
+            // 
+            this.tubeValidationControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tubeValidationControl1.LimitTubeCount = false;
+            this.tubeValidationControl1.LimitTubeMax = 0;
+            this.tubeValidationControl1.Location = new System.Drawing.Point(3, 71);
+            this.tubeValidationControl1.Name = "tubeValidationControl1";
+            this.tubeValidationControl1.Size = new System.Drawing.Size(901, 392);
+            this.tubeValidationControl1.TabIndex = 0;
+            this.tubeValidationControl1.VisibleColumnDefinition = "SeqNbr=Tube;AccessionNumber=Container;TubeLabel=Label;Name=Name;MRN=MRN;Confirmat" +
+    "ionIcon=Confirmed?";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.flowTubeListDisplayControl1);
@@ -238,6 +250,14 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "View recent racks";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // flowTubeListDisplayControl1
+            // 
+            this.flowTubeListDisplayControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowTubeListDisplayControl1.Location = new System.Drawing.Point(3, 30);
+            this.flowTubeListDisplayControl1.Name = "flowTubeListDisplayControl1";
+            this.flowTubeListDisplayControl1.Size = new System.Drawing.Size(901, 474);
+            this.flowTubeListDisplayControl1.TabIndex = 0;
             // 
             // panel1
             // 
@@ -258,26 +278,6 @@
             this.cmdRefresh.UseVisualStyleBackColor = true;
             this.cmdRefresh.Click += new System.EventHandler(this.cmdRefresh_Click);
             // 
-            // tubeValidationControl1
-            // 
-            this.tubeValidationControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tubeValidationControl1.LimitTubeCount = false;
-            this.tubeValidationControl1.LimitTubeMax = 0;
-            this.tubeValidationControl1.Location = new System.Drawing.Point(3, 71);
-            this.tubeValidationControl1.Name = "tubeValidationControl1";
-            this.tubeValidationControl1.Size = new System.Drawing.Size(901, 392);
-            this.tubeValidationControl1.TabIndex = 0;
-            this.tubeValidationControl1.VisibleColumnDefinition = "SeqNbr=Tube;AccessionNumber=Container;TubeLabel=Label;Name=Name;MRN=MRN;Confirmat" +
-    "ionIcon=Confirmed?";
-            // 
-            // flowTubeListDisplayControl1
-            // 
-            this.flowTubeListDisplayControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowTubeListDisplayControl1.Location = new System.Drawing.Point(3, 30);
-            this.flowTubeListDisplayControl1.Name = "flowTubeListDisplayControl1";
-            this.flowTubeListDisplayControl1.Size = new System.Drawing.Size(901, 474);
-            this.flowTubeListDisplayControl1.TabIndex = 0;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,7 +286,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UT MDACC Helix Flow Tube Checker";
+            this.Text = "UT MDACC Flow Tube Checker";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.pnlTest.ResumeLayout(false);
             this.pnlTest.PerformLayout();

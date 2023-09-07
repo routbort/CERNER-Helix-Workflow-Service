@@ -115,6 +115,7 @@ namespace HelixFlowTubeChecker
 
         public void HandleAccessionScan(string code)
         {
+           string AccessionNumberUnformatted = code.Replace("-", "");
 
             if (CurrentStatus == Status.PendingManifestChoice)
             {
@@ -132,13 +133,13 @@ namespace HelixFlowTubeChecker
 
             if (CurrentStatus == Status.ManifestInProgress)
             {
-                ConfirmTube(code);
+                ConfirmTube(AccessionNumberUnformatted);
                 return;
             }
 
             if (CurrentStatus == Status.ManifestComplete)
             {
-                if (code == this.LastTube.AccessionNumberUnformatted)
+                if (AccessionNumberUnformatted == this.LastTube.AccessionNumberUnformatted)
                 {
                     _FlowTubeList.verified_by = Environment.UserName;
                     ShowMessage("Manifest validated and submitted by " + Global.CURRENT_USERNAME + ".  OK to proceed");
@@ -157,7 +158,7 @@ namespace HelixFlowTubeChecker
 
             if (CurrentStatus == Status.PendingManifest)
             {
-                List<FlowTubeList> matches = _DataInterface.GetMatchingTubeLists(code);
+                List<FlowTubeList> matches = _DataInterface.GetMatchingTubeLists(AccessionNumberUnformatted);
 
                 if (matches.Count == 0)
                 {

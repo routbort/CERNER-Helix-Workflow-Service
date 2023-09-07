@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.33801.198
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CERNER Helix Workflow Service", "CERNER Helix Workflow Service\CERNER Helix Workflow Service.csproj", "{8A04A2CD-9D04-4EFB-A6CB-B08212FD4CBB}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CERNER Helix Workflow Service Setup", "CERNER Helix Workflow Service Setup\CERNER Flat File Cleanup Service Setup.vdproj", "{3D362A91-0DFC-43E6-BCEE-AC432DE5EE48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelixFlowTubeChecker", "HelixFlowTubeChecker\HelixFlowTubeChecker.csproj", "{44EAA54B-1ADD-4D8B-B8BC-6A9E5C5631C2}"
 EndProject
@@ -17,8 +17,6 @@ Global
 		{8A04A2CD-9D04-4EFB-A6CB-B08212FD4CBB}.Debug|x86.Build.0 = Debug|x86
 		{8A04A2CD-9D04-4EFB-A6CB-B08212FD4CBB}.Release|x86.ActiveCfg = Release|x86
 		{8A04A2CD-9D04-4EFB-A6CB-B08212FD4CBB}.Release|x86.Build.0 = Release|x86
-		{3D362A91-0DFC-43E6-BCEE-AC432DE5EE48}.Debug|x86.ActiveCfg = Debug
-		{3D362A91-0DFC-43E6-BCEE-AC432DE5EE48}.Release|x86.ActiveCfg = Release
 		{44EAA54B-1ADD-4D8B-B8BC-6A9E5C5631C2}.Debug|x86.ActiveCfg = Debug|x86
 		{44EAA54B-1ADD-4D8B-B8BC-6A9E5C5631C2}.Debug|x86.Build.0 = Debug|x86
 		{44EAA54B-1ADD-4D8B-B8BC-6A9E5C5631C2}.Release|x86.ActiveCfg = Release|x86
@@ -26,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7EA02AF0-553E-4B34-9B7D-2EB6BFF660E0}
 	EndGlobalSection
 EndGlobal
