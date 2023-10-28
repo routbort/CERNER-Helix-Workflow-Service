@@ -116,7 +116,7 @@ namespace HelixFlowTubeChecker
         public void HandleAccessionScan(string code)
         {
            string AccessionNumberUnformatted = code.Replace("-", "");
-
+            
             if (CurrentStatus == Status.PendingManifestChoice)
             {
 

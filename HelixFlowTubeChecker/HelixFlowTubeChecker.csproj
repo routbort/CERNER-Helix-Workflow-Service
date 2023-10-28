@@ -15,7 +15,7 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>ftp://utmpathstn1nt/HelixFlowCheckerTest/</PublishUrl>
+    <PublishUrl>ftp://utmpathstn1nt/HelixFlowChecker/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -25,12 +25,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://utmpathstn1nt/HelixFlowCheckerTest/</InstallUrl>
-    <ProductName>Helix Tube Checker Test</ProductName>
+    <InstallUrl>http://utmpathstn1nt/HelixFlowChecker/</InstallUrl>
+    <ProductName>Helix Tube Checker</ProductName>
     <PublisherName>UT MD Anderson Laboratory Informatics</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>default.htm</WebPage>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -61,7 +61,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>8847DE561ABDB1609A72D0EC6277FB0A89148639</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>87FEB223525D9452657756048C8281BDD6F0487B</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -74,7 +74,8 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>edirm_css.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Conductor.Devices.BarcodeScanner">
@@ -122,6 +123,9 @@
     </Compile>
     <Compile Include="Controls\FlowTubeListDisplayControl.Designer.cs">
       <DependentUpon>FlowTubeListDisplayControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BarcodeAwareForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>

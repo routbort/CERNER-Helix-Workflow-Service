@@ -13,15 +13,17 @@ using Conductor.Devices.BarcodeScanner;
 
 namespace HelixFlowTubeChecker
 {
-    public partial class frmMain : Form
+    public partial class frmMain : BarCodeAwareForm
     {
         public frmMain()
         {
+
             InitializeComponent();
             DataInterface di = new DataInterface(Global.SAMPLE_CONNECTION);
             this.tubeValidationControl1.Bind(di);
             this.flowTubeListDisplayControl1.Bind(di);
             Conductor.Devices.BarcodeScanner.BarCodeWatcher bcw = new BarCodeWatcher(Global.USB_SCANNER_CONFIG);
+            this.BarcodeScanned += FrmMain_BarcodeScanned;
             bcw.CodeRead += new BarCodeWatcher.CodeReadHandler(bcw_CodeRead);
             // tubeValidationControl1.ShowMessage("Welcome to the tube checker. Scan first tube of a rack/manifest to begin.");
             this.flowTubeListDisplayControl1.RefreshData();
@@ -32,6 +34,11 @@ namespace HelixFlowTubeChecker
         //  fsw.IncludeSubdirectories = true;
     //    fsw.Created += new FileSystemEventHandler(fsw_Created);
    //      fsw.EnableRaisingEvents = true;
+        }
+
+        private void FrmMain_BarcodeScanned(object sender, BarcodeScanEventArgs e)
+        {
+            this.HandleBarCodeScan(new Code(e.Code, Symbology.Code128));
         }
 
         void fsw_Created(object sender, FileSystemEventArgs e)
@@ -80,10 +87,19 @@ namespace HelixFlowTubeChecker
             this.HandleBarCodeScan(barcode);
         }
 
+        int scanCount = 0;
+
         public void HandleBarCodeScan(Code barcode)
         {
-            if (barcode.Symbology == Symbology.DataMatrix || barcode.Symbology==Symbology.Code128)
+            scanCount++;
+            if (barcode.Symbology == Symbology.DataMatrix || barcode.Symbology == Symbology.Code128)
+            {
+
+                string AccessionNumberUnformatted = barcode.TextData.Replace("-", "");
+                lblBarcode.Text = "Scan #" + scanCount.ToString() + ", symbology " + barcode.Symbology.ToString() + " raw data '" + barcode.TextData + "' downformatted '" + AccessionNumberUnformatted + "'";
+                lblBarcode.Visible = true;
                 tubeValidationControl1.HandleAccessionScan(barcode.TextData);
+            }
             else
             {
                 Sound.PlayWaveResource("StateError.wav");

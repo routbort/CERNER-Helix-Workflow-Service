@@ -43,7 +43,7 @@ public class FlowTubeList
                         item.TubeLabel = row["Task"].ToString();
                         tubes[batchNumber].Add(item);
                     }
-
+               
                     List<int> batchNumbers = new List<int>(tubes.Keys);
                     batchNumbers.Sort();
                     foreach (int batchNumber in batchNumbers)
@@ -55,7 +55,8 @@ public class FlowTubeList
                             sequenceNumber++;
                         } 
                     }
-
+                    System.IO.File.Copy(path, path + "X");
+                    try { System.IO.File.Delete(path); } catch { }
                     is_valid = (_FlowTubes.Count != 0);
                 }
                 catch (Exception ex)

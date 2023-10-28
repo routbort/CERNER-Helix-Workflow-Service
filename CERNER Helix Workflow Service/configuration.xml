@@ -2,9 +2,9 @@
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Root>\\plmfs1\PLMLABS\Helix Automation\PROD</Root>
   <FlowTubeCheckerRoot>\\plmfs1\PLMLABS\Helix Automation\PROD\Flow Cytometry</FlowTubeCheckerRoot>
-  <FlowTubeCheckerRootBeaker>\\mdadataprod\plmlabs\BeakerAutomation\TEST\Flow Cytometry\Tube Checker</FlowTubeCheckerRootBeaker>
-  <DatabaseServer>SPIDRPRDDB</DatabaseServer>
-  <DatabaseName>HelixWorkflowCert</DatabaseName>
+  <FlowTubeCheckerRootBeaker>\\mdadataprod\plmlabs\BeakerAutomation\PROD\Flow Cytometry\Tube Checker</FlowTubeCheckerRootBeaker>
+  <DatabaseServer>LABPSQL2</DatabaseServer>
+  <DatabaseName>HelixWorkflow</DatabaseName>
   <DatabaseUsername>HelixWorkflow_ServiceAccount</DatabaseUsername>
   <WorkingDirectoryName></WorkingDirectoryName>
   <ArchiveDirectoryName>ArchiveFiles</ArchiveDirectoryName>

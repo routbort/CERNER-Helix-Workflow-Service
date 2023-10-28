@@ -1,11 +1,10 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.CompilerServices;
 using System.IO;
-using System.ComponentModel;
 
 
 public class DataInterface
@@ -54,7 +53,7 @@ public class DataInterface
 
 
     public void UpdateVerficationInfo(FlowTubeList list)
-   
+
     {
 
         using (SqlConnection connection = new SqlConnection(this.ConnectionString))
@@ -148,7 +147,7 @@ public class DataInterface
     }
 
 
-    public DataTable  GetRecentTubeLists ()
+    public DataTable GetRecentTubeLists()
     {
 
         using (SqlConnection connection = new SqlConnection(this.ConnectionString))
@@ -159,7 +158,7 @@ public class DataInterface
             CommandType = CommandType.StoredProcedure
         })
         {
-          
+
             DataSet dataSet = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             connection.Open();
@@ -169,7 +168,7 @@ public class DataInterface
 
         }
 
- 
+
     }
 
     public void GetFlowTubeListID(FlowTubeList info)
@@ -204,7 +203,7 @@ public class DataInterface
 
     }
 
-    public int? GetFlowTubeListMatchingHash(string file_hash )
+    public int? GetFlowTubeListMatchingHash(string file_hash)
     {
 
         using (SqlConnection connection = new SqlConnection(this.ConnectionString))
@@ -223,8 +222,8 @@ public class DataInterface
             connection.Close();
             if (dataSet.Tables[0].Rows.Count == 0) return null;
             DataRow row = dataSet.Tables[0].Rows[0];
-           int flow_tube_list_id =  Convert.ToInt32(row["flow_tube_list_id"]);
-           return flow_tube_list_id;
+            int flow_tube_list_id = Convert.ToInt32(row["flow_tube_list_id"]);
+            return flow_tube_list_id;
         }
 
     }
@@ -298,7 +297,7 @@ public class DataInterface
         {
             try
             {
-               data= File.ReadAllText(path);
+                data = File.ReadAllText(path);
                 success = true;
             }
             catch (Exception ex)
@@ -361,7 +360,15 @@ public class DataInterface
         foreach (string filepath in Directory.GetFiles(path, "*.xlsx"))
         {
             if (ParseFile(filepath))
+            {
                 new_files.Add(filepath);
+                string filename = Path.GetFileName(filepath);
+                string processedDirectory = Path.Combine(path, "Processed");
+                if (!Directory.Exists(processedDirectory))
+                    Directory.CreateDirectory(processedDirectory);
+                File.Move(filepath, Path.Combine(processedDirectory, filename));
+            }
+
         }
 
         return new_files;

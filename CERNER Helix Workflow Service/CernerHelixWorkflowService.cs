@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading;
-using System.Configuration;
 using System.IO;
-using System.Xml.Serialization;
 using System.Net.Mail;
+using System.ServiceProcess;
+using System.Threading;
+using System.Xml.Serialization;
 
 namespace CERNER_Helix_Workflow_Service
 {
@@ -43,7 +37,7 @@ namespace CERNER_Helix_Workflow_Service
 
         protected override void OnStart(string[] args)
         {
-            eventLog1.WriteEntry("Raw service start");
+            eventLog1.WriteEntry("Raw service start v2");
 
             XmlSerializer ser = new XmlSerializer(typeof(Configuration));
             string configFile = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "configuration.xml");
@@ -64,7 +58,7 @@ namespace CERNER_Helix_Workflow_Service
             try
             {
                 bool success = _DataInterface.ParseFile(e.FullPath);
-                LogEvent("New XML file: " + e.FullPath + ((success) ? " SUCCESS" : " FAILURE"), false);
+                LogEvent("New file: " + e.FullPath + ((success) ? " SUCCESS" : " FAILURE"), false);
             }
             catch (Exception ex)
             {
@@ -97,11 +91,11 @@ namespace CERNER_Helix_Workflow_Service
                 if (!_ServiceStartupWorkDone)
                 {
                     _ServiceStartupWorkDone = true;
-                    eventLog1.WriteEntry("Service starting");
+                    eventLog1.WriteEntry("Service starting v2");
                     AppDomain currentDomain = AppDomain.CurrentDomain;
                     currentDomain.UnhandledException += new UnhandledExceptionEventHandler(currentDomain_UnhandledException);
                     LogFile = Path.Combine(_Configuration.Root, "log.txt");
-                    LogEvent("Service started on machine " + Environment.MachineName + " at " + DateTime.Now.ToLongTimeString(), true);
+                    LogEvent("Service started v2 on machine " + Environment.MachineName + " at " + DateTime.Now.ToLongTimeString(), true);
                     _watcher = new FileSystemWatcher(_Configuration.FlowTubeCheckerRoot, "*.xml");
                     _watcher.IncludeSubdirectories = true;
                     _watcher.Created += new FileSystemEventHandler(watcher_Created);
@@ -118,7 +112,7 @@ namespace CERNER_Helix_Workflow_Service
             ArchiveFiles(_Configuration.Root, _Configuration.ArchiveAfterMinutes);
 
         }
- 
+
 
         void DoWorkFlow(object state)
         {
@@ -129,6 +123,7 @@ namespace CERNER_Helix_Workflow_Service
 
             try
             {
+                LogEvent("DoWorkFlow " + DateTime.Now.ToLongTimeString(), false);
                 int UpdateCount = _DataInterface.ParseDirectory(_Configuration.FlowTubeCheckerRoot).Count;
                 if (UpdateCount != 0)
                     LogEvent(UpdateCount.ToString() + " flow XML manifests uploaded at " + DateTime.Now.ToLongTimeString(), false);
@@ -139,7 +134,8 @@ namespace CERNER_Helix_Workflow_Service
             }
             catch (Exception ex)
             {
-                LogEvent("Exception in DoWorkFlow: " + ex.Message + Environment.NewLine + ex.StackTrace, true);
+
+                LogEvent("Exception in DoWorkFlow: " + ex.Message + Environment.NewLine + ex.StackTrace, (ex is IOException) ? false : true);
 
             }
 
@@ -253,7 +249,7 @@ namespace CERNER_Helix_Workflow_Service
             {
                 _DataInterface.InsertEventLog(EventMessage, EventType, EventStack, Environment.MachineName, "Service");
             }
-            catch  
+            catch
             {
             }
 

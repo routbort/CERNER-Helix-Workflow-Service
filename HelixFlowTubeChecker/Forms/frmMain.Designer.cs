@@ -44,11 +44,12 @@
             this.chkShowTest = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tubeValidationControl1 = new HelixFlowTubeChecker.TubeValidationControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.flowTubeListDisplayControl1 = new HelixFlowTubeChecker.FlowTubeListDisplayControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmdRefresh = new System.Windows.Forms.Button();
+            this.tubeValidationControl1 = new HelixFlowTubeChecker.TubeValidationControl();
+            this.flowTubeListDisplayControl1 = new HelixFlowTubeChecker.FlowTubeListDisplayControl();
+            this.lblBarcode = new System.Windows.Forms.Label();
             this.pnlTest.SuspendLayout();
             this.pnlReset.SuspendLayout();
             this.pblDebugOption.SuspendLayout();
@@ -136,6 +137,7 @@
             // 
             // pnlTest
             // 
+            this.pnlTest.Controls.Add(this.lblBarcode);
             this.pnlTest.Controls.Add(this.txtLimit);
             this.pnlTest.Controls.Add(this.chkLimitTubes);
             this.pnlTest.Controls.Add(this.textBox2);
@@ -148,7 +150,7 @@
             this.pnlTest.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTest.Location = new System.Drawing.Point(3, 3);
             this.pnlTest.Name = "pnlTest";
-            this.pnlTest.Size = new System.Drawing.Size(901, 68);
+            this.pnlTest.Size = new System.Drawing.Size(901, 86);
             this.pnlTest.TabIndex = 10;
             this.pnlTest.Visible = false;
             // 
@@ -227,18 +229,6 @@
             this.tabPage1.Text = "Rack validation";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tubeValidationControl1
-            // 
-            this.tubeValidationControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tubeValidationControl1.LimitTubeCount = false;
-            this.tubeValidationControl1.LimitTubeMax = 0;
-            this.tubeValidationControl1.Location = new System.Drawing.Point(3, 71);
-            this.tubeValidationControl1.Name = "tubeValidationControl1";
-            this.tubeValidationControl1.Size = new System.Drawing.Size(901, 392);
-            this.tubeValidationControl1.TabIndex = 0;
-            this.tubeValidationControl1.VisibleColumnDefinition = "SeqNbr=Tube;AccessionNumber=Container;TubeLabel=Label;Name=Name;MRN=MRN;Confirmat" +
-    "ionIcon=Confirmed?";
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.flowTubeListDisplayControl1);
@@ -250,14 +240,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "View recent racks";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // flowTubeListDisplayControl1
-            // 
-            this.flowTubeListDisplayControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowTubeListDisplayControl1.Location = new System.Drawing.Point(3, 30);
-            this.flowTubeListDisplayControl1.Name = "flowTubeListDisplayControl1";
-            this.flowTubeListDisplayControl1.Size = new System.Drawing.Size(901, 474);
-            this.flowTubeListDisplayControl1.TabIndex = 0;
             // 
             // panel1
             // 
@@ -277,6 +259,36 @@
             this.cmdRefresh.Text = "Refresh";
             this.cmdRefresh.UseVisualStyleBackColor = true;
             this.cmdRefresh.Click += new System.EventHandler(this.cmdRefresh_Click);
+            // 
+            // tubeValidationControl1
+            // 
+            this.tubeValidationControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tubeValidationControl1.LimitTubeCount = false;
+            this.tubeValidationControl1.LimitTubeMax = 0;
+            this.tubeValidationControl1.Location = new System.Drawing.Point(3, 89);
+            this.tubeValidationControl1.Name = "tubeValidationControl1";
+            this.tubeValidationControl1.Size = new System.Drawing.Size(901, 374);
+            this.tubeValidationControl1.TabIndex = 0;
+            this.tubeValidationControl1.VisibleColumnDefinition = "SeqNbr=Tube;AccessionNumber=Container;TubeLabel=Label;Name=Name;MRN=MRN;Confirmat" +
+    "ionIcon=Confirmed?";
+            // 
+            // flowTubeListDisplayControl1
+            // 
+            this.flowTubeListDisplayControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowTubeListDisplayControl1.Location = new System.Drawing.Point(3, 30);
+            this.flowTubeListDisplayControl1.Name = "flowTubeListDisplayControl1";
+            this.flowTubeListDisplayControl1.Size = new System.Drawing.Size(901, 474);
+            this.flowTubeListDisplayControl1.TabIndex = 0;
+            // 
+            // lblBarcode
+            // 
+            this.lblBarcode.AutoSize = true;
+            this.lblBarcode.Location = new System.Drawing.Point(5, 66);
+            this.lblBarcode.Name = "lblBarcode";
+            this.lblBarcode.Size = new System.Drawing.Size(35, 13);
+            this.lblBarcode.TabIndex = 10;
+            this.lblBarcode.Text = "label1";
+            this.lblBarcode.Visible = false;
             // 
             // frmMain
             // 
@@ -324,6 +336,7 @@
         private FlowTubeListDisplayControl flowTubeListDisplayControl1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button cmdRefresh;
+        private System.Windows.Forms.Label lblBarcode;
     }
 }
 
